@@ -160,6 +160,7 @@ const previewDate  = document.getElementById('proj-date');
 
 if (preview) {
   preview.style.display = 'none';
+  if (previewDate) previewDate.style.display = 'none'; // hide date per request
 
   // Preview card tightly follows dot (not ring)
   gsap.ticker.add(() => {
@@ -172,7 +173,10 @@ if (preview) {
 function showPreview(imgUrl, date) {
   if (!preview || !previewCover) return;
   previewCover.src = imgUrl;
-  if (previewDate) previewDate.innerText = date;
+  if (previewDate) {
+    previewDate.innerText = '';
+    previewDate.style.display = 'none'; // hide date per request
+  }
   preview.style.display = 'block';
   gsap.fromTo(preview, { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' });
 }
@@ -317,7 +321,10 @@ function openDetailPanel(id, title, date, desc, tags, imgUrl) {
   const thumbnailsCol    = document.getElementById('detail-thumbnails-col');
 
   if (detailTitleElem) detailTitleElem.innerText = title;
-  if (detailYearElem)  detailYearElem.innerText  = `(${date})`;
+  if (detailYearElem) {
+    detailYearElem.innerText  = '';
+    detailYearElem.style.display = 'none'; // hide date per request
+  }
   if (detailDescElem)  detailDescElem.innerText  = desc;
 
   if (tagsContainer) {
