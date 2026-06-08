@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Ludo Labs Co.</title>
+  <meta name="description" content="Get in touch with Ludo Labs Co. for design collaborations, motion graphics, branding, print packaging, and UI/UX design.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css?v=3">
+</head>
+<body class="subpage-body contact-page">
+
+  <!-- Custom Cursor -->
+  <div class="proj-cursor" id="proj-cursor" style="border: 1px solid #000000;">SEE PROJECT</div>
+
+  <!-- Transition Swipe Panels -->
+  <div class="transition-panel" id="transition-panel">
+    <div class="t-panel-dark" id="t-panel-dark"></div>
+    <div class="t-panel-orange" id="t-panel-orange"></div>
+  </div>
+
+  <!-- Fixed Scroll Progress Sidebar (Black themed for contact page) -->
+  <div class="scroll-pct" id="scroll-pct" style="color: #000000;">(0)</div>
+  <div class="scroll-timeline" id="scroll-timeline" style="background-color: rgba(0, 0, 0, 0.08);">
+    <span class="st-label" id="st-label" style="color: #000000;">CONTACT</span>
+    <div class="st-bar-wrap">
+      <div class="st-bar" id="st-bar" style="background-color: #000000;"></div>
+    </div>
+  </div>
+
+  <div class="scroll-wrap">
+
+    <!-- Subpage Navigation Header (Black theme) -->
+    <header class="subpage-header dark-header">
+      <div class="header-logo">
+        <a href="../" class="chr-hover" data-chr="Ludo Labs Co." style="color: #000000;">Ludo Labs Co.</a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a class="chr-hover" data-chr="Work" href="../works/" style="color: #000000;" aria-label="Work"></a>
+        <span class="sep" style="color: rgba(0, 0, 0, 0.15);">/</span>
+        <a class="chr-hover" data-chr="Info" href="../info/" style="color: #000000;" aria-label="Info"></a>
+        <span class="sep" style="color: rgba(0, 0, 0, 0.15);">/</span>
+        <a class="chr-hover active" data-chr="Contact" href="./" style="color: #000000;" aria-label="Contact"></a>
+      </nav>
+    </header>
+
+    <!-- Main Contact Layout (Resembles 2nd Image) -->
+    <main class="contact-main">
+      <div class="contact-grid">
+        
+        <!-- Left Side: Title and links -->
+        <div class="contact-left-col">
+          <h2 class="contact-big-title">Contact</h2>
+          
+          <div class="contact-links-list">
+            <a class="chr-hover c-link" data-chr="Facebook" href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="chr-hover c-link" data-chr="Instagram" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="chr-hover c-link" data-chr="Tiktok" href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">Tiktok</a>
+            
+            <a class="contact-mail-address" href="mailto:hello@ludolabs.co">hello@ludolabs.co</a>
+          </div>
+        </div>
+
+        <!-- Right Side: Text blocks and graphic frames -->
+        <div class="contact-right-col">
+          
+          <!-- Block 1 -->
+          <div class="contact-block">
+            <div class="c-block-text">
+              Looking for a <span class="accent-serif">design laboratory</span> to elevate your next project? Eager to join forces and collaborate on ambitious visual graphics.
+            </div>
+            <div class="c-block-image-wrap">
+              <img src="../assets/hypermotion.png" alt="Creative Graphic" loading="lazy">
+              <span class="plus-corner tl">+</span>
+              <span class="plus-corner tr">+</span>
+              <span class="plus-corner bl">+</span>
+              <span class="plus-corner br">+</span>
+            </div>
+          </div>
+
+          <!-- Block 2 -->
+          <div class="contact-block reverse">
+            <div class="c-block-image-wrap">
+              <img src="../assets/kuro.png" alt="Packaging Graphic" loading="lazy">
+              <span class="plus-corner tl">+</span>
+              <span class="plus-corner tr">+</span>
+              <span class="plus-corner bl">+</span>
+              <span class="plus-corner br">+</span>
+            </div>
+            <div class="c-block-text">
+              We are available for <span class="accent-serif">freelance missions</span> worldwide, specializing in brand systems and international collaborations.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <!-- No footer needed: contact layout is the entire page. -->
+
+  </div>
+
+  <!-- CDNs for animations and smooth scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="../js/index.js?v=3"></script>
+</body>
+</html>

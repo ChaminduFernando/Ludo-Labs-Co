@@ -40,6 +40,15 @@
     <div class="t-panel-orange" id="t-panel-orange"></div>
   </div>
 
+  <!-- Fixed Scroll Progress Sidebar (Resembles 4th Image) -->
+  <div class="scroll-pct" id="scroll-pct">(0)</div>
+  <div class="scroll-timeline" id="scroll-timeline">
+    <span class="st-label" id="st-label">HERO</span>
+    <div class="st-bar-wrap">
+      <div class="st-bar" id="st-bar"></div>
+    </div>
+  </div>
+
   <!-- Smooth Scroll Container -->
   <div class="scroll-wrap" id="scroll-wrap">
 
@@ -73,18 +82,18 @@
             <span class="chr-hover" data-chr="🡺V1.0"></span>
           </div>
           <nav class="hero-bar-center" aria-label="Social networks">
-            <a class="chr-hover" data-chr="Behance" href="https://www.behance.net" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
+            <a class="chr-hover" data-chr="Facebook" href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a>
             <span class="sep" aria-hidden="true">/</span>
-            <a class="chr-hover" data-chr="LinkedIn" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+            <a class="chr-hover" data-chr="Instagram" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a>
             <span class="sep" aria-hidden="true">/</span>
-            <a class="chr-hover" data-chr="GitHub" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+            <a class="chr-hover" data-chr="Tiktok" href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="Tiktok"></a>
           </nav>
           <nav class="hero-bar-right" aria-label="Main navigation">
-            <a class="chr-hover" data-chr="Work" href="#projects-anchor" aria-label="Selected Works"></a>
+            <a class="chr-hover" data-chr="Work" href="works/" aria-label="Selected Works"></a>
             <span class="sep" aria-hidden="true">/</span>
-            <a class="chr-hover" data-chr="Info" href="#about" aria-label="About studio"></a>
+            <a class="chr-hover" data-chr="Info" href="info/" aria-label="About studio"></a>
             <span class="sep" aria-hidden="true">/</span>
-            <a class="chr-hover" data-chr="Contact" href="#contact" aria-label="Contact Section"></a>
+            <a class="chr-hover" data-chr="Contact" href="contact/" aria-label="Contact Section"></a>
           </nav>
         </div>
       </div>
@@ -105,9 +114,9 @@
     <!-- About & Services List Container -->
     <section class="section-after" id="section-after">
       
-      <!-- About description (Resembles 2nd & 3rd Image with 3D tilting Logo) -->
+      <!-- About description (Simplified on home page, full details in Info) -->
       <div class="about" id="about">
-        <div class="about-left">
+        <div class="about-left" style="grid-column: span 2;">
           <div class="about-text" id="about-text">
             As a <span class="accent-serif">design laboratory</span>, we fuse technical precision and <span class="other-accent">raw emotion</span>.
           </div>
@@ -115,7 +124,7 @@
             Ludo Labs Co. is a multi-disciplinary creative studio. We cover everything from graphic design and video editing to print packaging and UI/UX design. Our philosophy centers on creating vibrant aesthetics that spark curiosity and break patterns.
           </div>
           <div class="about-btn">
-            <a class="chr-hover about-contact-link" data-chr="Get in touch" href="#contact" aria-label="Contact Ludo Labs"></a>
+            <a class="chr-hover about-contact-link" data-chr="Read more details" href="info/" aria-label="Studio details"></a>
           </div>
           <div class="about-version">
             <svg style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;" viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -123,18 +132,9 @@
             </svg>LUDO V1.0
           </div>
         </div>
-
-        <div class="about-right">
-          <div class="logo-3d-wrap" id="logo-3d-wrap">
-            <div class="logo-3d-card" id="logo-3d-card">
-              <img class="about-logo" src="assets/logo.png" alt="Ludo Labs Co. Logo" decoding="async">
-              <div class="logo-card-glow" id="logo-card-glow"></div>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <!-- Services section with cursor hovering previews (Resembles 4th Image) -->
+      <!-- Services section with cursor hovering previews -->
       <div class="services-list-container" id="services">
         <h2 class="services-title">Services</h2>
         <div class="services-grid">
@@ -163,7 +163,9 @@
             <div class="service-arrow">🡵</div>
           </div>
           
-        </div>    </section>
+        </div>
+      </div>
+    </section>
 
     <div id="projects-anchor"></div>
 
@@ -225,188 +227,63 @@
       </div>
     </section>
 
-    <!-- Packages Section -->
-    <section class="packages-section" id="packages">
-      <div class="packages-inner">
-        <div class="skills-subtitle">Studio Offers</div>
-        <h2 class="section-title">Packages</h2>
-        <div class="packages-grid">
+    <!-- Footer Section (Directly below Projects, styled like the 2nd Image) -->
+    <footer class="footer site-footer" id="footer">
+      <div class="contact-grid">
+        <!-- Left Side: Title and links -->
+        <div class="contact-left-col">
+          <h2 class="contact-big-title">Contact</h2>
           
-          <div class="package-card">
-            <span class="package-corner tl"></span>
-            <span class="package-corner tr"></span>
-            <span class="package-corner bl"></span>
-            <span class="package-corner br"></span>
-            <div class="package-header">
-              <div class="package-num">01</div>
-              <h3 class="package-title">Core Brand System</h3>
-            </div>
-            <p class="package-desc">Essential branding assets for startups and emerging companies to establish a strong visual presence.</p>
-            <ul class="package-details">
-              <li>Custom Logo Design & Monograms</li>
-              <li>Curated Color Palette & Type Pairing</li>
-              <li>Brand Guidelines & Style Sheet</li>
-              <li>Social Media Templates (6 layouts)</li>
-              <li>Business Card & Stationary Print setup</li>
-            </ul>
-            <div class="package-price">From $1,800</div>
+          <div class="contact-links-list">
+            <a class="chr-hover c-link" data-chr="Facebook" href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="chr-hover c-link" data-chr="Instagram" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="chr-hover c-link" data-chr="Tiktok" href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">Tiktok</a>
+            
+            <a class="contact-mail-address" href="mailto:hello@ludolabs.co">hello@ludolabs.co</a>
           </div>
-
-          <div class="package-card featured">
-            <span class="package-corner tl"></span>
-            <span class="package-corner tr"></span>
-            <span class="package-corner bl"></span>
-            <span class="package-corner br"></span>
-            <div class="package-header">
-              <div class="package-num">02</div>
-              <h3 class="package-title">Motion & Digital</h3>
-            </div>
-            <p class="package-desc">Dynamic animated content to elevate your social campaigns, websites, and presentation materials.</p>
-            <ul class="package-details">
-              <li>Creative Direction & Storyboarding</li>
-              <li>3D Motion Graphics & Explainer Reels</li>
-              <li>Dynamic Logo Intros & Animated Titles</li>
-              <li>Social Media Video Assets (Shorts/Reels)</li>
-              <li>Audio Syncing & Sound Effects Design</li>
-            </ul>
-            <div class="package-price">From $2,500</div>
-          </div>
-
-          <div class="package-card">
-            <span class="package-corner tl"></span>
-            <span class="package-corner tr"></span>
-            <span class="package-corner bl"></span>
-            <span class="package-corner br"></span>
-            <div class="package-header">
-              <div class="package-num">03</div>
-              <h3 class="package-title">Premium Experience</h3>
-            </div>
-            <p class="package-desc">Complete visual packaging, combining custom physical print assets and interactive UI/UX prototyping.</p>
-            <ul class="package-details">
-              <li>End-to-End Brand System Design</li>
-              <li>Custom Product Print & Bottle Packaging</li>
-              <li>Interactive Landing Page UI/UX</li>
-              <li>Figma Prototype with Motion Systems</li>
-              <li>Full Production Asset Package</li>
-            </ul>
-            <div class="package-price">From $4,500</div>
-          </div>
-
         </div>
-      </div>
-    </section>
 
-    <!-- The Team Section -->
-    <section class="team-section" id="team">
-      <div class="team-inner">
-        <div class="skills-subtitle">The Studio</div>
-        <h2 class="section-title">The Team</h2>
-        <div class="team-grid">
+        <!-- Right Side: Text blocks and graphic frames -->
+        <div class="contact-right-col">
           
-          <div class="team-card">
-            <div class="team-img-wrap">
-              <img class="team-img" src="assets/chamindu.png" alt="Chamindu Fernando" loading="lazy">
-              <span class="team-frame-corner tl"></span>
-              <span class="team-frame-corner tr"></span>
-              <span class="team-frame-corner bl"></span>
-              <span class="team-frame-corner br"></span>
+          <!-- Block 1 -->
+          <div class="contact-block">
+            <div class="c-block-text">
+              Looking for a <span class="accent-serif">design laboratory</span> to elevate your next project? Eager to join forces and collaborate on ambitious visual graphics.
             </div>
-            <h3 class="team-member-name">Chamindu Fernando</h3>
-            <p class="team-member-role">Co-Founder / Creative Designer</p>
-          </div>
-
-          <div class="team-card">
-            <div class="team-img-wrap">
-              <img class="team-img" src="assets/thirandie.png" alt="Thirandie Samarasekara" loading="lazy">
-              <span class="team-frame-corner tl"></span>
-              <span class="team-frame-corner tr"></span>
-              <span class="team-frame-corner bl"></span>
-              <span class="team-frame-corner br"></span>
+            <div class="c-block-image-wrap">
+              <img src="assets/hypermotion.png" alt="Creative Graphic" loading="lazy">
+              <span class="plus-corner tl">+</span>
+              <span class="plus-corner tr">+</span>
+              <span class="plus-corner bl">+</span>
+              <span class="plus-corner br">+</span>
             </div>
-            <h3 class="team-member-name">Thirandie Samarasekara</h3>
-            <p class="team-member-role">Co-Founder / Creative Designer</p>
           </div>
 
-          <div class="team-card">
-            <div class="team-img-wrap">
-              <img class="team-img" src="assets/nirmana.png" alt="Nirmana Mithradasa" loading="lazy">
-              <span class="team-frame-corner tl"></span>
-              <span class="team-frame-corner tr"></span>
-              <span class="team-frame-corner bl"></span>
-              <span class="team-frame-corner br"></span>
+          <!-- Block 2 -->
+          <div class="contact-block reverse">
+            <div class="c-block-image-wrap">
+              <img src="assets/kuro.png" alt="Packaging Graphic" loading="lazy">
+              <span class="plus-corner tl">+</span>
+              <span class="plus-corner tr">+</span>
+              <span class="plus-corner bl">+</span>
+              <span class="plus-corner br">+</span>
             </div>
-            <h3 class="team-member-name">Nirmana Mithradasa</h3>
-            <p class="team-member-role">Content Creator & Social Coordinator</p>
+            <div class="c-block-text">
+              We are available for <span class="accent-serif">freelance missions</span> worldwide, specializing in brand systems and international collaborations.
+            </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section (Resembles Reference) -->
-    <section class="contact" id="contact">
-      <div class="contact-pin" id="contact-pin">
-        <div class="contact-title" id="contact-title">Contact</div>
-        <div class="contact-bottom" id="contact-bottom">
-          <nav class="contact-socials" id="contact-socials" aria-label="Social networks">
-            <a class="chr-hover" data-chr-contact="Behance" href="https://www.behance.net" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
-            <a class="chr-hover" data-chr-contact="LinkedIn" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
-            <a class="chr-hover" data-chr-contact="Instagram" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a>
-          </nav>
-          <a class="contact-mail" id="contact-mail" href="mailto:hello@ludolabs.co">hello@ludolabs.co</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer Section (Resembles Reference exactly) -->
-    <footer class="footer" id="footer">
-      <div class="footer-content" id="footer-content">
-        <div class="footer-top">
-          <div class="footer-top-col">
-            <a class="chr-hover footer-mail" data-chr-footer="hello@ludolabs.co" href="mailto:hello@ludolabs.co" aria-label="Send mail"></a>
-            <span class="chr-hover footer-date" data-chr-footer="© 2026"></span>
-          </div>
-          <nav class="footer-top-col" aria-label="Social connections">
-            <a class="chr-hover" data-chr-footer="Behance" href="https://www.behance.net" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
-            <a class="chr-hover" data-chr-footer="LinkedIn" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
-            <a class="chr-hover" data-chr-footer="Instagram" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a>
-          </nav>
-          <nav class="footer-top-col" aria-label="Footer links">
-            <a class="chr-hover" data-chr-footer="Work" href="#projects-anchor" aria-label="Work"></a>
-            <a class="chr-hover" data-chr-footer="Info" href="#about" aria-label="Info"></a>
-            <a class="chr-hover" data-chr-footer="Contact" href="#contact" aria-label="Contact"></a>
-          </nav>
-        </div>
-        <div class="footer-ascii-wrap">
-          <div class="footer-ascii left">
-            <pre id="ascii-left">
- _      _    _ _____   ____  
-| |    | |  | |  __ \ / __ \ 
-| |    | |  | | |  | | |  | |
-| |    | |  | | |  | | |  | |
-| |____| |__| | |__| | |__| |
-|______.______/_____/ \____/ 
-            </pre>
-          </div>
-          <div class="footer-ascii right">
-            <pre id="ascii-right">
- _          _    _____   _____ 
-| |        / \  |  __ \ / ____|
-| |       / _ \ | |__) | (___  
-| |      / ___ \|  _  / \___ \ 
-| |____ / /   \ \ |_) |____) |
-|______/_/     \_\____/|_____/ 
-            </pre>
-          </div>
-        </div>
-        <div class="footer-name">
-          <span class="footer-name-luke"><span class="first-letter">L</span>udo</span><span
-            class="footer-name-baffait-wrap"><span class="footer-name-baffait">Labs Co</span><span
-              class="footer-name-dot">.</span></span>
         </div>
       </div>
     </footer>
 
+  </div>
+
+  <!-- Lightbox Zoom Modal -->
+  <div class="lightbox-modal" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Fullscreen Zoom">
   </div>
 
   <!-- Float Floating Hover Previews (for projects/services list reveals) -->
@@ -420,19 +297,33 @@
     </div>
   </div>
 
-  <!-- Project Details Screen (Slides in dynamically when project is clicked) -->
+  <!-- Project Details Screen (Slides in dynamically, structured like 3rd Image) -->
   <section class="project-detail" id="project-detail">
     <div class="detail-back chr-hover" id="detail-back" data-chr="🡼 CLOSE"></div>
-    <div class="detail-info">
-      <div class="detail-title-wrap" id="detail-title-wrap">
-        <h1 class="detail-title" id="detail-title"></h1>
-        <span class="detail-year" id="detail-year"></span>
+    <div class="detail-info-layout">
+      
+      <!-- Left Info Block -->
+      <div class="detail-info">
+        <div class="detail-title-wrap" id="detail-title-wrap">
+          <h1 class="detail-title" id="detail-title"></h1>
+          <span class="detail-year" id="detail-year"></span>
+        </div>
+        <p class="detail-desc" id="detail-desc"></p>
+        <div class="detail-tags" id="detail-tags"></div>
       </div>
-      <p class="detail-desc" id="detail-desc"></p>
-      <div class="detail-tags" id="detail-tags"></div>
-    </div>
-    <div class="detail-gallery-wrap" id="detail-gallery-wrap">
-      <div class="detail-selected" id="detail-selected"></div>
+
+      <!-- Center vertical column of thumbnails (4:3 ratio previews) -->
+      <div class="detail-thumbnails-col" id="detail-thumbnails-col">
+        <!-- populated dynamically in JS -->
+      </div>
+
+      <!-- Right Mockup Screen (Click to zoom lightbox) -->
+      <div class="detail-gallery-wrap" id="detail-gallery-wrap">
+        <div class="detail-selected" id="detail-selected">
+          <!-- populated dynamically in JS -->
+        </div>
+      </div>
+
     </div>
   </section>
 

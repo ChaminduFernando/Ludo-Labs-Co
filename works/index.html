@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Works — Ludo Labs Co.</title>
+  <meta name="description" content="Explore the creative works and design projects of Ludo Labs Co., specializing in Motion & Video, Print & Packaging, and UI/UX.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css?v=3">
+</head>
+<body class="subpage-body">
+
+  <!-- Custom Cursor -->
+  <div class="proj-cursor" id="proj-cursor">SEE PROJECT</div>
+
+  <!-- Transition Swipe Panels -->
+  <div class="transition-panel" id="transition-panel">
+    <div class="t-panel-dark" id="t-panel-dark"></div>
+    <div class="t-panel-orange" id="t-panel-orange"></div>
+  </div>
+
+  <!-- Fixed Scroll Progress Sidebar -->
+  <div class="scroll-pct" id="scroll-pct">(0)</div>
+  <div class="scroll-timeline" id="scroll-timeline">
+    <span class="st-label" id="st-label">WORKS</span>
+    <div class="st-bar-wrap">
+      <div class="st-bar" id="st-bar"></div>
+    </div>
+  </div>
+
+  <div class="scroll-wrap">
+
+    <!-- Subpage Navigation Header -->
+    <header class="subpage-header">
+      <div class="header-logo">
+        <a href="../" class="chr-hover" data-chr="Ludo Labs Co.">Ludo Labs Co.</a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a class="chr-hover active" data-chr="Work" href="./" aria-label="Work"></a>
+        <span class="sep">/</span>
+        <a class="chr-hover" data-chr="Info" href="../info/" aria-label="Info"></a>
+        <span class="sep">/</span>
+        <a class="chr-hover" data-chr="Contact" href="../contact/" aria-label="Contact"></a>
+      </nav>
+    </header>
+
+    <!-- Works Grid List Container -->
+    <main class="works-main-container">
+      <h2 class="subpage-title">Works</h2>
+      
+      <div class="works-page-list">
+        
+        <div class="proj-scroll-item" data-id="hypermotion" data-img="../assets/hypermotion.png" data-date="05 2026" data-desc="A high-octane visual experience blending 3D physics simulations and experimental motion graphics, designed to explore futuristic aesthetics." data-tags="Motion Design, 3D Art, Direction">
+          <span class="proj-number">01</span>
+          <span class="proj-name">HyperMotion™</span>
+        </div>
+
+        <div class="proj-scroll-item" data-id="kuro" data-img="../assets/kuro.png" data-date="06 2026" data-desc="A comprehensive brand strategy, visual identity and tactile packaging experience for a luxury charcoal-filtered beverage brand." data-tags="Branding, Print, Packaging Mockup">
+          <span class="proj-number">02</span>
+          <span class="proj-name">Kuro Brand</span>
+        </div>
+
+        <div class="proj-scroll-item" data-id="aether" data-img="../assets/aether.png" data-date="07 2026" data-desc="An immersive dashboard interface and dark-mode data visualization system featuring dynamic components and smooth feedback transitions." data-tags="UI/UX Design, Web Application, Interface">
+          <span class="proj-number">03</span>
+          <span class="proj-name">Aether Portal</span>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer Section (Directly below content, styled like the 2nd Image) -->
+    <footer class="footer site-footer" id="footer">
+      <div class="contact-grid">
+        <!-- Left Side: Title and links -->
+        <div class="contact-left-col">
+          <h2 class="contact-big-title">Contact</h2>
+          
+          <div class="contact-links-list">
+            <a class="chr-hover c-link" data-chr="Facebook" href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="chr-hover c-link" data-chr="Instagram" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="chr-hover c-link" data-chr="Tiktok" href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">Tiktok</a>
+            
+            <a class="contact-mail-address" href="mailto:hello@ludolabs.co">hello@ludolabs.co</a>
+          </div>
+        </div>
+
+        <!-- Right Side: Text blocks and graphic frames -->
+        <div class="contact-right-col">
+          
+          <!-- Block 1 -->
+          <div class="contact-block">
+            <div class="c-block-text">
+              Looking for a <span class="accent-serif">design laboratory</span> to elevate your next project? Eager to join forces and collaborate on ambitious visual graphics.
+            </div>
+            <div class="c-block-image-wrap">
+              <img src="../assets/hypermotion.png" alt="Creative Graphic" loading="lazy">
+              <span class="plus-corner tl">+</span>
+              <span class="plus-corner tr">+</span>
+              <span class="plus-corner bl">+</span>
+              <span class="plus-corner br">+</span>
+            </div>
+          </div>
+
+          <!-- Block 2 -->
+          <div class="contact-block reverse">
+            <div class="c-block-image-wrap">
+              <img src="../assets/kuro.png" alt="Packaging Graphic" loading="lazy">
+              <span class="plus-corner tl">+</span>
+              <span class="plus-corner tr">+</span>
+              <span class="plus-corner bl">+</span>
+              <span class="plus-corner br">+</span>
+            </div>
+            <div class="c-block-text">
+              We are available for <span class="accent-serif">freelance missions</span> worldwide, specializing in brand systems and international collaborations.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Lightbox Zoom Modal -->
+  <div class="lightbox-modal" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Fullscreen Zoom">
+  </div>
+
+  <!-- Float Floating Hover Previews -->
+  <div class="proj-preview" id="proj-preview">
+    <div class="proj-card" id="proj-card">
+      <div class="proj-meta">
+        <span class="proj-date" id="proj-date">05 2026</span>
+        <span class="proj-label">Preview</span>
+      </div>
+      <img id="proj-cover" src="../assets/hypermotion.png" alt="Project Preview Cover" width="1333" height="1000">
+    </div>
+  </div>
+
+  <!-- Project Details Screen -->
+  <section class="project-detail" id="project-detail">
+    <div class="detail-back chr-hover" id="detail-back" data-chr="🡼 CLOSE"></div>
+    <div class="detail-info-layout">
+      
+      <div class="detail-info">
+        <div class="detail-title-wrap" id="detail-title-wrap">
+          <h1 class="detail-title" id="detail-title"></h1>
+          <span class="detail-year" id="detail-year"></span>
+        </div>
+        <p class="detail-desc" id="detail-desc"></p>
+        <div class="detail-tags" id="detail-tags"></div>
+      </div>
+
+      <div class="detail-thumbnails-col" id="detail-thumbnails-col">
+        <!-- populated dynamically in JS -->
+      </div>
+
+      <div class="detail-gallery-wrap" id="detail-gallery-wrap">
+        <div class="detail-selected" id="detail-selected">
+          <!-- populated dynamically in JS -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CDNs for animations and smooth scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="../js/index.js?v=3"></script>
+</body>
+</html>
