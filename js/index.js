@@ -16,43 +16,72 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
 
-// --- CUSTOM CURSOR ---
+// ================================================================
+// PREMIUM CURSOR: small pulsing dot + lagging ring trail
+// ================================================================
 const cursor = document.getElementById('proj-cursor');
 let mouseX = 0, mouseY = 0;
-let curX = 0, curY = 0;
+let dotX = 0, dotY = 0, ringX = 0, ringY = 0;
+
+// Inject the trailing ring (separate from the dot)
+const cursorRing = document.createElement('div');
+cursorRing.classList.add('cursor-trail');
+document.body.appendChild(cursorRing);
 
 window.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
+// Ticker: dot snaps fast, ring lags for trailing feel
 gsap.ticker.add(() => {
-  curX += (mouseX - curX) * 0.12;
-  curY += (mouseY - curY) * 0.12;
-  if (cursor) gsap.set(cursor, { x: curX, y: curY });
+  dotX += (mouseX - dotX) * 0.58;
+  dotY += (mouseY - dotY) * 0.58;
+  if (cursor) gsap.set(cursor, { x: dotX, y: dotY });
+
+  ringX += (mouseX - ringX) * 0.1;
+  ringY += (mouseY - ringY) * 0.1;
+  gsap.set(cursorRing, { x: ringX, y: ringY });
 });
 
-// Cursor hover rules
-document.querySelectorAll('a, button, .rw-item, .proj-scroll-item, .service-item, .detail-back, .logo-3d-card, .team-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    if (cursor) gsap.to(cursor, { scale: 1.2, backgroundColor: '#ffffff', mixBlendMode: 'difference', duration: 0.2 });
-  });
-  el.addEventListener('mouseleave', () => {
-    if (cursor) {
-      gsap.to(cursor, { scale: 0, backgroundColor: '#ff5a00', mixBlendMode: 'normal', duration: 0.2 });
-      cursor.innerText = 'SEE PROJECT';
-    }
-  });
+// State helpers
+function setCursorProject(label) {
+  if (!cursor) return;
+  cursor.innerText = label || 'VIEW';
+  cursor.classList.add('expanded');
+  cursor.classList.remove('expanded-white');
+  gsap.to(cursorRing, { scale: 0, opacity: 0, duration: 0.2 });
+}
+
+function setCursorLink() {
+  if (!cursor) return;
+  cursor.innerText = '';
+  cursor.classList.add('expanded-white');
+  cursor.classList.remove('expanded');
+  gsap.to(cursorRing, { scale: 0, opacity: 0, duration: 0.2 });
+}
+
+function resetCursor() {
+  if (!cursor) return;
+  cursor.innerText = '';
+  cursor.classList.remove('expanded', 'expanded-white');
+  gsap.to(cursorRing, { scale: 1, opacity: 1, duration: 0.3 });
+}
+
+// Links/buttons → white blob
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', setCursorLink);
+  el.addEventListener('mouseleave', resetCursor);
 });
 
 
-// --- PRELOADER (homepage only) ---
+// ================================================================
+// PRELOADER (homepage only)
+// ================================================================
 window.addEventListener('DOMContentLoaded', () => {
   if (!document.getElementById('name-layer')) return;
 
@@ -76,7 +105,9 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- HERO AURA BACKDROP (animated breathing background) ---
+// ================================================================
+// HERO AURA BACKDROP (breathing + mouse parallax)
+// ================================================================
 window.addEventListener('mousemove', (e) => {
   if (!document.querySelector('.aura-1')) return;
   const x = e.clientX / window.innerWidth;
@@ -87,16 +118,16 @@ window.addEventListener('mousemove', (e) => {
 });
 
 if (document.querySelector('.aura-1')) {
-  // Continuous breathing rotation
   gsap.to('.aura-1', { rotation: 360, duration: 22, repeat: -1, ease: 'none' });
   gsap.to('.aura-2', { rotation: -360, duration: 30, repeat: -1, ease: 'none' });
-  // Pulsing scale to make it feel alive
   gsap.to('.aura-1', { scale: 1.18, duration: 4.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
   gsap.to('.aura-2', { scale: 1.12, duration: 6, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 1 });
 }
 
 
-// --- 3D TILTING LOGO CARD (Info page) ---
+// ================================================================
+// 3D TILTING LOGO CARD (Info page)
+// ================================================================
 const logoCard = document.getElementById('logo-3d-card');
 if (logoCard) {
   logoCard.addEventListener('mousemove', (e) => {
@@ -120,92 +151,88 @@ if (logoCard) {
 }
 
 
-// --- FLOATING PREVIEW ENGINE ---
-const preview = document.getElementById('proj-preview');
+// ================================================================
+// FLOATING PREVIEW CARD (follows cursor)
+// ================================================================
+const preview     = document.getElementById('proj-preview');
 const previewCover = document.getElementById('proj-cover');
-const previewDate = document.getElementById('proj-date');
+const previewDate  = document.getElementById('proj-date');
 
 if (preview) {
   preview.style.display = 'none';
+
+  // Preview card tightly follows dot (not ring)
   gsap.ticker.add(() => {
     if (preview.style.display === 'block') {
-      gsap.set(preview, { x: mouseX + 25, y: mouseY + 25 });
+      gsap.set(preview, { x: mouseX + 28, y: mouseY + 28 });
     }
   });
 }
 
 function showPreview(imgUrl, date) {
   if (!preview || !previewCover) return;
-  if (previewCover) previewCover.src = imgUrl;
+  previewCover.src = imgUrl;
   if (previewDate) previewDate.innerText = date;
   preview.style.display = 'block';
-  gsap.fromTo(preview, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
+  gsap.fromTo(preview, { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' });
 }
 
 function hidePreview() {
   if (!preview) return;
-  gsap.to(preview, { opacity: 0, scale: 0.92, duration: 0.25, onComplete: () => { preview.style.display = 'none'; } });
+  gsap.to(preview, { opacity: 0, scale: 0.9, duration: 0.25, onComplete: () => { preview.style.display = 'none'; } });
 }
 
 
-// --- SERVICES HOVER (cursor changes) ---
+// ================================================================
+// SERVICES HOVER
+// ================================================================
 document.querySelectorAll('.service-item').forEach(item => {
   item.addEventListener('mouseenter', () => {
-    if (cursor) {
-      cursor.innerText = 'DISCOVER';
-      cursor.classList.add('discover-active');
-      gsap.to(cursor, { scale: 1, duration: 0.2 });
-    }
+    setCursorProject('DISCOVER');
   });
-  item.addEventListener('mouseleave', () => {
-    if (cursor) {
-      cursor.innerText = 'SEE PROJECT';
-      cursor.classList.remove('discover-active');
-      gsap.to(cursor, { scale: 0, duration: 0.2 });
-    }
-  });
+  item.addEventListener('mouseleave', resetCursor);
 });
 
 
-// --- RECENT WORKS LIST HOVER PREVIEW (homepage .rw-item) ---
+// ================================================================
+// RECENT WORKS LIST hover preview + cursor
+// ================================================================
 document.querySelectorAll('.rw-item').forEach(item => {
   const imgUrl = item.getAttribute('data-img');
-  const date = item.getAttribute('data-date');
+  const date   = item.getAttribute('data-date');
 
   item.addEventListener('mouseenter', () => {
     showPreview(imgUrl, date);
-    if (cursor) {
-      cursor.innerText = 'VIEW';
-      gsap.to(cursor, { scale: 1, duration: 0.2 });
-    }
+    setCursorProject('VIEW');
   });
-
   item.addEventListener('mouseleave', () => {
     hidePreview();
+    resetCursor();
   });
 });
 
 
-// --- WORKS PAGE LIST HOVER PREVIEW (.proj-scroll-item on works page) ---
+// ================================================================
+// WORKS PAGE LIST hover preview + cursor
+// ================================================================
 document.querySelectorAll('.proj-scroll-item').forEach(item => {
   const imgUrl = item.getAttribute('data-img');
-  const date = item.getAttribute('data-date');
+  const date   = item.getAttribute('data-date');
 
   item.addEventListener('mouseenter', () => {
     showPreview(imgUrl, date);
-    if (cursor) {
-      cursor.innerText = 'VIEW';
-      gsap.to(cursor, { scale: 1, duration: 0.2 });
-    }
+    setCursorProject('VIEW');
   });
-
   item.addEventListener('mouseleave', () => {
     hidePreview();
+    resetCursor();
   });
 });
 
 
-// --- SCROLL PROGRESS SIDEBAR ---
+// ================================================================
+// SCROLL PROGRESS SIDEBAR
+// ================================================================
 window.addEventListener('scroll', () => {
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   if (docHeight > 0) {
@@ -216,14 +243,16 @@ window.addEventListener('scroll', () => {
     if (barElem) barElem.style.height = `${pct}%`;
   }
 
-  // Active section name on homepage
+  // Section name update on homepage
   if (document.getElementById('hero')) {
     const sections = [
-      { id: 'hero', label: 'HERO' },
-      { id: 'about', label: 'ABOUT' },
-      { id: 'services', label: 'SERVICES' },
-      { id: 'recent-works', label: 'WORKS' },
-      { id: 'footer', label: 'CONTACT' }
+      { id: 'hero',         label: 'HERO'     },
+      { id: 'about',        label: 'ABOUT'    },
+      { id: 'services',     label: 'SERVICES' },
+      { id: 'recent-works', label: 'WORKS'    },
+      { id: 'packages',     label: 'PACKAGES' },
+      { id: 'team',         label: 'TEAM'     },
+      { id: 'footer',       label: 'CONTACT'  }
     ];
     let activeLabel = 'HERO';
     const scrollPos = window.pageYOffset + window.innerHeight * 0.4;
@@ -237,9 +266,11 @@ window.addEventListener('scroll', () => {
 });
 
 
-// --- LIGHTBOX ZOOM MODAL ---
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
+// ================================================================
+// LIGHTBOX ZOOM MODAL
+// ================================================================
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightbox-img');
 const lightboxClose = document.getElementById('lightbox-close');
 
 function openLightbox(src) {
@@ -250,40 +281,40 @@ function openLightbox(src) {
 }
 
 if (lightboxClose) lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
-if (lightbox) {
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) lightbox.classList.remove('open');
-  });
-}
+if (lightbox) lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) lightbox.classList.remove('open');
+});
 
 
-// --- PROJECT DETAIL PANEL ---
+// ================================================================
+// PROJECT DETAIL PANEL
+// ================================================================
 const isSubpage = window.location.pathname.includes('/works/') ||
-                  window.location.pathname.includes('/info/') ||
+                  window.location.pathname.includes('/info/')   ||
                   window.location.pathname.includes('/contact/');
 
 const getAssetPath = (path) => isSubpage ? '../' + path : path;
 
 const projectGalleries = {
-  hypermotion: ['assets/hypermotion.png', 'assets/kuro.png', 'assets/aether.png'],
-  kuro:        ['assets/kuro.png', 'assets/aether.png', 'assets/hypermotion.png'],
-  aether:      ['assets/aether.png', 'assets/hypermotion.png', 'assets/kuro.png']
+  hypermotion: ['assets/hypermotion.png', 'assets/kuro.png',        'assets/aether.png'    ],
+  kuro:        ['assets/kuro.png',        'assets/aether.png',       'assets/hypermotion.png'],
+  aether:      ['assets/aether.png',      'assets/hypermotion.png',  'assets/kuro.png'      ]
 };
 
-const detailPanel = document.getElementById('project-detail');
-const detailBack  = document.getElementById('detail-back');
-const darkPanel   = document.getElementById('t-panel-dark');
-const orangePanel = document.getElementById('t-panel-orange');
+const detailPanel  = document.getElementById('project-detail');
+const detailBack   = document.getElementById('detail-back');
+const darkPanel    = document.getElementById('t-panel-dark');
+const orangePanel  = document.getElementById('t-panel-orange');
 
 function openDetailPanel(id, title, date, desc, tags, imgUrl) {
   if (!detailPanel) return;
 
-  const detailTitleElem = document.getElementById('detail-title');
-  const detailYearElem  = document.getElementById('detail-year');
-  const detailDescElem  = document.getElementById('detail-desc');
-  const tagsContainer   = document.getElementById('detail-tags');
+  const detailTitleElem  = document.getElementById('detail-title');
+  const detailYearElem   = document.getElementById('detail-year');
+  const detailDescElem   = document.getElementById('detail-desc');
+  const tagsContainer    = document.getElementById('detail-tags');
   const graphicContainer = document.getElementById('detail-selected');
-  const thumbnailsCol   = document.getElementById('detail-thumbnails-col');
+  const thumbnailsCol    = document.getElementById('detail-thumbnails-col');
 
   if (detailTitleElem) detailTitleElem.innerText = title;
   if (detailYearElem)  detailYearElem.innerText  = `(${date})`;
@@ -329,7 +360,7 @@ function openDetailPanel(id, title, date, desc, tags, imgUrl) {
     });
   }
 
-  // Wipe transition in
+  // Wipe-in transition
   const wipe = gsap.timeline();
   wipe.to([darkPanel, orangePanel], { yPercent: -100, stagger: 0.1, duration: 0.6, ease: 'power3.inOut' });
   wipe.call(() => {
@@ -344,7 +375,7 @@ function openDetailPanel(id, title, date, desc, tags, imgUrl) {
   }, '>-=0.2');
 }
 
-// Bind click to homepage recent works items
+// Homepage recent works
 document.querySelectorAll('.rw-item').forEach(item => {
   item.addEventListener('click', () => {
     openDetailPanel(
@@ -358,7 +389,7 @@ document.querySelectorAll('.rw-item').forEach(item => {
   });
 });
 
-// Bind click to works page project list items
+// Works page list
 document.querySelectorAll('.proj-scroll-item').forEach(item => {
   item.addEventListener('click', () => {
     openDetailPanel(
@@ -372,7 +403,7 @@ document.querySelectorAll('.proj-scroll-item').forEach(item => {
   });
 });
 
-// Close button
+// Close panel
 if (detailBack) {
   detailBack.addEventListener('click', () => {
     const wipe = gsap.timeline();
