@@ -2857,3 +2857,61 @@ body.contact-page {
   aspect-ratio: 3 / 4 !important;
   object-fit: cover !important;
 }
+
+/* ================================================================
+   MOBILE SCROLLING & ALIGNMENT UX IMPROVEMENTS
+   ================================================================ */
+@media (max-width: 1024px) {
+  html, body {
+    overscroll-behavior-y: auto !important;
+    scroll-behavior: smooth !important;
+  }
+
+  /* Smooth momentum scrolling for overlay modal on iOS */
+  .project-detail {
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important; /* Firefox */
+  }
+
+  .project-detail::-webkit-scrollbar {
+    display: none !important; /* Safari/Chrome */
+  }
+
+  /* Clear click target z-index */
+  .detail-back {
+    z-index: 100 !important;
+  }
+
+  /* Unified portrait aspect ratio for team members */
+  .team-img-wrap {
+    width: 100% !important;
+    aspect-ratio: 3 / 4 !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Fix squished side-by-side layout in footers/contact blocks on mobile */
+  .contact-block,
+  .contact-block.reverse {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    align-items: stretch !important;
+  }
+
+  .c-block-text {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Hide thumbnail carousel scrollbar */
+  .detail-thumbnails-col {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  
+  .detail-thumbnails-col::-webkit-scrollbar {
+    display: none !important;
+  }
+}

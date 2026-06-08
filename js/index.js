@@ -2,22 +2,26 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // --- LENIS SMOOTH SCROLL ---
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
-  touchMultiplier: 2
-});
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+let lenis = null;
 
-function raf(time) {
-  lenis.raf(time);
+if (!isTouchDevice) {
+  lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false
+  });
+
+  function raf(time) {
+    if (lenis) lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
   requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
 
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.lagSmoothing(0);
+}
 
 
 // ================================================================
@@ -373,7 +377,7 @@ function openDetailPanel(id, title, date, desc, tags, imgUrl) {
   wipe.call(() => {
     detailPanel.classList.add('open');
     detailPanel.scrollTop = 0;
-    lenis.stop();
+    if (lenis) lenis.stop();
   });
   wipe.to([orangePanel, darkPanel], { yPercent: -200, stagger: 0.08, duration: 0.6, ease: 'power3.inOut' });
   wipe.set([darkPanel, orangePanel], { yPercent: 100 });
@@ -417,7 +421,7 @@ if (detailBack) {
     wipe.to([darkPanel, orangePanel], { yPercent: -100, stagger: 0.08, duration: 0.5, ease: 'power3.inOut' });
     wipe.call(() => {
       detailPanel.classList.remove('open');
-      lenis.start();
+      if (lenis) lenis.start();
     });
     wipe.to([orangePanel, darkPanel], { yPercent: -200, stagger: 0.08, duration: 0.5, ease: 'power3.inOut' });
     wipe.set([darkPanel, orangePanel], { yPercent: 100 });
